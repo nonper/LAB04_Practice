@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import EventDetails from '../views/EventDetailView.vue'
 import AirlineDetails from '../views/AirlineDetails.vue'
+import NotFoundView from '../views/event/NotFoundError.vue'
 
 const routes = [
   {
@@ -29,6 +30,17 @@ const routes = [
     name: 'AirlineDetails',
     component: AirlineDetails,
     props: true
+  },
+  {
+    path: '/404/:resource',
+    name: '404Resource',
+    component: NotFoundView,
+    props: true
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFoundView
   }
 ]
 
