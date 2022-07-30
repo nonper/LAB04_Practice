@@ -1,13 +1,18 @@
 <template>
-  <div class="event" v-if="event">
-    <h1>Name: {{ event.name }}</h1>
-    <p>ID: {{ event._id }}</p>
-    <p>Trips: {{ event.trips }}</p>
+  <div class="home">
+    <router-link :to="{ name: 'EventDetails', params: { id: this.id } }">
+      See Passenger Details
+    </router-link>
+    <router-link :to="{ name: 'AirlineDetails', params: { id: this.id } }">
+      Airline Details
+    </router-link>
   </div>
 </template>
 
 <script>
-import EventService from '@/services/EventService'
+// @ is an alias to /src
+import EventService from '@/services/EventService.js'
+
 export default {
   props: ['id'],
   data() {
@@ -32,3 +37,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+</style>
