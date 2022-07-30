@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <p>id: {{ this.id }}</p>
     <router-link :to="{ name: 'EventDetails', params: { id: this.id } }">
       See Passenger Details
     </router-link>
@@ -7,6 +8,7 @@
       Airline Details
     </router-link>
   </div>
+  <router-view :event="event" />
 </template>
 
 <script>

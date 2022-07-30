@@ -20,22 +20,24 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/passenger/:id',
-    name: 'EventDetails',
-    component: EventDetails,
-    props: true
-  },
-  {
-    path: '/airline/:id',
-    name: 'AirlineDetails',
-    component: AirlineDetails,
-    props: true
-  },
-  {
     path: '/select/:id',
     name: 'LayoutView',
     component: LayoutView,
-    props: true
+    props: true,
+    children: [
+      {
+        path: '/passenger/:id',
+        name: 'EventDetails',
+        component: EventDetails,
+        props: true
+      },
+      {
+        path: '/airline/:id',
+        name: 'AirlineDetails',
+        component: AirlineDetails,
+        props: true
+      }
+    ]
   }
 ]
 
