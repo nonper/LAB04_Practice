@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import EventDetails from '../views/EventDetailView.vue'
 import AirlineDetails from '../views/AirlineDetails.vue'
 import LayoutView from '../views/LayoutView.vue'
+import NotFoundPage from '../views/event/NotFoundPage.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
         props: true
       }
     ]
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFoundPage',
+    component: NotFoundPage
   }
 ]
 
