@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3004',
+  baseURL:
+    'https://my-json-server.typicode.com/se331-2022/passengerdb/passenger',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,10 +12,10 @@ const apiClient = axios.create({
 
 export default {
   getEventsAir() {
-    return apiClient.get('/airline')
+    return apiClient.get('/')
   },
   //Added new call
-  getEventsPass() {
-    return apiClient.get('/passengers')
+  getEventsPass(perPage, limit) {
+    return apiClient.get('/?_page=' + perPage + '&_limit=' + limit)
   }
 }
