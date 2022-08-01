@@ -1,8 +1,9 @@
 <template>
   <div class="event" v-if="event">
-    <h1>Name: {{ event.name }}</h1>
-    <p>ID: {{ event._id }}</p>
-    <p>Trips: {{ event.trips }}</p>
+    <h1>Name: {{ event.first_name }} {{ event.last_name }}</h1>
+    <p>ID: {{ event.id }}</p>
+    <p>Email: {{ event.email }}</p>
+    <p>Gender: {{ event.gender }}</p>
   </div>
 </template>
 
@@ -16,15 +17,9 @@ export default {
     }
   },
   created() {
-    EventService.getEventsPass()
+    EventService.getEventPass(this.id)
       .then((res) => {
-        res.data.forEach((obj) => {
-          obj.data.forEach((obj) => {
-            if (obj._id == this.id) {
-              this.event = obj
-            }
-          })
-        })
+        this.event = res.data
       })
       .catch((err) => {
         console.log(err)

@@ -1,15 +1,10 @@
 <template>
   <div class="home">
-    <tr v-for="event in events" :key="event.id">
-      <h3>Total Passenger: {{ event.totalPassengers }}</h3>
-    </tr>
-    <template v-for="item in events">
-      <EventCard
-        v-for="event in item.data"
-        :key="event.id"
-        :event="event"
-      ></EventCard>
-    </template>
+    <EventCard
+      v-for="event in events"
+      :key="event.id"
+      :event="event"
+    ></EventCard>
   </div>
 </template>
 
@@ -29,7 +24,7 @@ export default {
     }
   },
   created() {
-    EventService.getEventsPass()
+    EventService.getEvents()
       .then((res) => {
         this.events = res.data
       })

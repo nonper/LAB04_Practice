@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home" v-if="event">
     <p>id: {{ this.id }}</p>
+    <p>name: {{ event.first_name }} {{ event.last_name }}</p>
     <router-link :to="{ name: 'EventDetails', params: { id: this.id } }">
       See Passenger Details
     </router-link>
@@ -23,15 +24,9 @@ export default {
     }
   },
   created() {
-    EventService.getEventsPass()
+    EventService.getEventPass(this.id)
       .then((res) => {
-        res.data.forEach((obj) => {
-          obj.data.forEach((obj) => {
-            if (obj._id == this.id) {
-              this.event = obj
-            }
-          })
-        })
+        this.event = res.data
       })
       .catch((err) => {
         console.log(err)

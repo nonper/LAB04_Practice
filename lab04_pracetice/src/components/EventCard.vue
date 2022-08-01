@@ -1,7 +1,7 @@
 <template>
   <div class="event-card">
-    <router-link :to="{ name: 'LayoutView', params: { id: event._id } }">
-      <span>{{ event.name }}</span>
+    <router-link :to="{ name: 'LayoutView', params: { id: event.id } }">
+      <span>{{ event.first_name }} {{ event.last_name }}</span>
     </router-link>
   </div>
 </template>
