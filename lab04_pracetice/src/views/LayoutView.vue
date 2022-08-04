@@ -1,11 +1,13 @@
 <template>
   <div class="home" v-if="event">
-    <p>id: {{ this.id }}</p>
+    <p>id: {{ event.id }}</p>
     <p>name: {{ event.first_name }} {{ event.last_name }}</p>
-    <router-link :to="{ name: 'EventDetails', params: { id: this.id } }">
+    <router-link :to="{ name: 'EventDetails', params: { id: event.id } }">
       See Passenger Details
     </router-link>
-    <router-link :to="{ name: 'AirlineDetails', params: { id: this.id } }">
+    <router-link
+      :to="{ name: 'AirlineDetails', params: { id: event.airlineId } }"
+    >
       Airline Details
     </router-link>
   </div>
